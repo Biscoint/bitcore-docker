@@ -4,7 +4,7 @@ services:
   bitcore:
     container_name: bitcore
     build: .
-    restart: always
+    restart: unless-stopped
     environment:
       - TZ=Asia/Seoul
       - NETWORK=livenet
@@ -12,9 +12,10 @@ services:
       - 80:3001
       - 8333
     volumes:
-      - data:/src/data
+      - bitcore_data:/src/data
       - node_modules:/usr/local/lib/node_modules
 
 volumes:
-  data:
+  bitcore_data:
+    external: true
   node_modules:
