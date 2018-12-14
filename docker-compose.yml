@@ -14,6 +14,12 @@ services:
     volumes:
       - bitcore_data:/src/data
       - node_modules:/usr/local/lib/node_modules
+  trezor-wallet:
+    container_name: trezor-wallet
+    image: jonathascarrijo/docker-trezor-wallet
+    restart: unless-stopped
+    ports:
+      - 8080:8080
 
 volumes:
   bitcore_data:
